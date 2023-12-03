@@ -23,7 +23,7 @@
   "include": [
     "src",
     "./src/entry-server.tsx",
-    "src/Route.tsx"
+    "./src/Root.tsx"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

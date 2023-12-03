@@ -1,32 +1,27 @@
-import { useEffect, useReducer } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLoaderData } from "react-router-dom";
+import { type Posts } from "../../types/posts";
+
+export async function loader() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts/')
+  const posts = await response.json()
+  return posts
+}
 
 const PostIndex: React.FC = () => {
-  const reducer = (_prev: any, action: {data: any}) => action.data;
-  const [articles, articleDataDispatch] = useReducer(reducer, [1]);
-
-  useEffect( () => {
-    fetch(`https://jsonplaceholder.typicode.com/posts/`).then( res => {
-      return res.json();
-    }).then( data => {
-      articleDataDispatch({data});
-    });
-  }, []);
+  const posts = useLoaderData() as Posts
 
   return <>
     <ul>
-      {
-        articles.map( (article: any) => {
-          return (
-            <li key={`article-${article.id}`}>
-              <NavLink to={`/posts/${article.id}`}>
-                {`Article No. ${article.id}`}
-              </NavLink>
-            </li>
-          );
-        })
-      }
-    </ul> 
+      {posts.map( post => {
+        return (
+          <li key={`post id-${String(post.id)}`}>
+            <NavLink to={`/posts/${post.id}`}>
+              {String(post.id)}
+            </NavLink>
+          </li>
+        )
+      })}
+    </ul>
   </>
 }
 

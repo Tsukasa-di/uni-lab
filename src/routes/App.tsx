@@ -1,11 +1,11 @@
-import Home from "./routes/home/App";
-import About from "./routes/about/App";
-import Posts from "./routes/posts/App";
-import Post from "./routes/post/App";
-import Nomatch from "./routes/nomatch/App";
+import Home from "./home/App";
+import About from "./about/App";
+import Posts from "./posts/App";
+import Post from "./post/App";
+import ErrorPage from "./errorPage/App"
 import { Route, Routes, NavLink } from "react-router-dom";
-import PostIndex from "./routes/posts/PostIndex";
-import Search from "./routes/search/App";
+import PostIndex from "./posts/PostIndex";
+import Search from "./search/App";
 
 const App: React.FC = () => {
   const linkActive = ( {isActive}: {isActive: boolean} ) => isActive ? {color: 'blue'} : undefined;
@@ -26,7 +26,7 @@ const App: React.FC = () => {
           <Route index element={<PostIndex />} />
           <Route path=":postId" element={<Post />} />
         </Route>
-        <Route path="*" element={<Nomatch />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
   )

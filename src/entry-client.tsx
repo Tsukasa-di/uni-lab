@@ -1,14 +1,9 @@
 import './index.css'
 import ReactDOM from 'react-dom/client'
-import App from './Route'
-import { BrowserRouter } from 'react-router-dom'
-import React from 'react'
+import { RouterProvider } from 'react-router-dom'
+import { router } from './routes/router'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
-  <BrowserRouter>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </BrowserRouter>
+  <RouterProvider router={router} />
 )
