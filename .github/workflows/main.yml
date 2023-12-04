@@ -35,4 +35,4 @@ jobs:
           port: ${{ secrets.UNILAB_FTP_PORT}}
           server-dir: ${{ secrets.UNILAB_FTP_REMOTE_ROOT }}
           local-dir: ./out/
-          dangerous-clean-slate: true
+          dangerous-clean-slate: false
